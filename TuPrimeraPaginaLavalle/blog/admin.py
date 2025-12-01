@@ -1,10 +1,6 @@
 from django.contrib import admin
 from .models import Producto
 
-<<<<<<< HEAD
 @admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'precio')
-=======
-admin.site.register(Producto)
->>>>>>> e4ab1ce1c256aac76b0ac87e71e46064d2c4c12b

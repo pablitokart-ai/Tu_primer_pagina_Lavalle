@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Productos</title>
+</head>
+<body>
+    <h1>Listado de Productos</h1>
+
+    {% if productos %}
+        <ul>
+        {% for producto in productos %}
+            <li>
+                <strong>{{ producto.nombre }}</strong> — ${{ producto.precio }}<br>
+                {{ producto.descripcion }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay productos cargados aún.</p>
+    {% endif %}
+</body>
+</html>

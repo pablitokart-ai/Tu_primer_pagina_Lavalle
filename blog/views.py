@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from .models import Producto
 from .forms import ProductoForm
@@ -15,3 +16,11 @@ def crear_producto(request):
     else:
         form = ProductoForm()
     return render(request, 'blog/crear_producto.html', {'form': form})
+=======
+from django.shortcuts import render
+from .models import Producto
+
+def listado_productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'blog/listado.html', {'productos': productos})
+>>>>>>> e4ab1ce1c256aac76b0ac87e71e46064d2c4c12b

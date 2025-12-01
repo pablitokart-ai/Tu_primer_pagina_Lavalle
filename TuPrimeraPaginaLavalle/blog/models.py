@@ -2,13 +2,8 @@ from django.db import models
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=100)
-<<<<<<< HEAD
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-=======
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
-    descripcion = models.TextField()
->>>>>>> e4ab1ce1c256aac76b0ac87e71e46064d2c4c12b
 
     def __str__(self):
         return self.nombre
