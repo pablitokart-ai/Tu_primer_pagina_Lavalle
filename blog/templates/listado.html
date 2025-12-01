@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de productos{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Listado de productos</h1>
+
+<a href="{% url 'crear_producto' %}" class="btn btn-primary mb-3">➕ Agregar producto</a>
+
+<ul class="list-group">
+    {% for producto in productos %}
+    <li class="list-group-item d-flex justify-content-between">
+        <div>
+            <strong>{{ producto.nombre }}</strong><br>
+            ${{ producto.precio }}
+        </div>
+        <span>ID: {{ producto.id }}</span>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
