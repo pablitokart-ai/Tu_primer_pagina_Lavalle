@@ -1,85 +1,145 @@
-# TuPrimeraPaginaLavalle
+TuPrimeraPaginaLavalle
 
-Proyecto Django mínimo entregable para la consigna:  
-- 1 modelo  
-- 1 vista que liste objetos  
-- herencia de plantillas  
-- README  
-- .gitignore  
-- requirements.txt  
+Proyecto Django para la entrega del curso, cumpliendo con los requisitos:
 
-## 🔧 Cómo usar el proyecto
+✔ 1 modelo
 
-### 1. Crear y activar el entorno virtual
-```bash
+✔ 1 vista que liste objetos
+
+✔ formularios para crear productos
+
+✔ herencia de plantillas
+
+✔ README
+
+✔ .gitignore
+
+✔ requirements.txt
+
+✔ rutas funcionando
+
+🚀 Cómo usar el proyecto
+1. Crear y activar el entorno virtual
 python -m venv venv
 venv\Scripts\activate      # Windows
 source venv/bin/activate   # Linux / macOS
-```
 
-### 2. Instalar dependencias
-```bash
+2. Instalar dependencias
 pip install -r requirements.txt
-```
 
-### 3. Aplicar migraciones
-```bash
+3. Aplicar migraciones
 python manage.py makemigrations
 python manage.py migrate
-```
 
-### 4. Crear superusuario (opcional)
-```bash
+4. Crear superusuario (opcional)
 python manage.py createsuperuser
-```
 
-### 5. Ejecutar el servidor
-```bash
+5. Ejecutar el servidor
 python manage.py runserver
-```
 
-### 6. Abrir en el navegador
-```
+
+Luego abrir en el navegador:
+
 http://127.0.0.1:8000/
-```
 
----
+▶️ Cómo probar el proyecto (lo que pide la consigna)
+1. Listado de productos
 
-## ▶️ Orden para probar el proyecto (lo que pide la consigna)
+Ir a:
 
-1. **Ingresar a la ruta principal**  
-   `http://127.0.0.1:8000/`  
-   Esto muestra la **vista listando los productos**.
+http://127.0.0.1:8000/productos/
 
-2. **(Opcional)** Ingresar al panel de administración  
-   `http://127.0.0.1:8000/admin/`  
-   Ahí se pueden **crear, editar o eliminar productos**.
 
-3. Volver a la página principal y refrescar:  
-   Se verá automáticamente el listado actualizado.
+Muestra el listado completo de productos cargados en la base.
 
----
+2. Formulario para crear productos
 
-## 📂 ¿Dónde están las funcionalidades?
+Ir a:
 
-### **Modelo**
-`blog/models.py`  
-- `Producto`: nombre, descripción, precio.
+http://127.0.0.1:8000/productos/nuevo/
 
-### **Vista**
-`blog/views.py`  
-- `listado_productos`: retorna la lista de productos a la plantilla.
 
-### **URL principal**
-`TuPrimeraPaginaLavalle/urls.py` → incluye las URLs del blog.
+Ahí se puede cargar un nuevo producto usando el formulario.
 
-### **URLs del blog**
-`blog/urls.py`  
-- Ruta `/` → muestra el listado de productos.
+3. Panel de administración (opcional)
+http://127.0.0.1:8000/admin/
 
-### **Templates**
-`blog/templates/`  
-- `base.html` → plantilla base  
-- `listado.html` → muestra los productos  
 
----
+Desde allí se pueden crear/editar/eliminar productos desde el admin de Django.
+
+📌 Estructura del proyecto
+TuPrimeraPaginaLavalle/
+│
+├── blog/
+│   ├── migrations/
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── listado.html
+│   │   └── crear_producto.html
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+│
+├── TuPrimeraPaginaLavalle/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+│
+├── manage.py
+├── requirements.txt
+└── README.md
+
+📂 Detalle de las funcionalidades
+Modelo — blog/models.py
+class Producto(models.Model):
+    nombre = models.CharField(max_length=100)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    descripcion = models.TextField()
+
+Formulario — blog/forms.py
+
+Formulario basado en ModelForm para crear productos.
+
+Vistas — blog/views.py
+
+listado_productos: muestra todos los productos.
+
+crear_producto: permite crear un producto desde un formulario.
+
+URLs — blog/urls.py
+productos/          → listado de productos
+productos/nuevo/    → formulario de creación
+
+Plantillas (templates)
+
+base.html → estructura general
+
+listado.html → muestra productos
+
+crear_producto.html → formulario para cargar productos
+
+✔ Entrega lista
+
+Este proyecto cumple todo lo solicitado por el profesor, incluyendo:
+
+modelo
+
+vista
+
+formulario
+
+listado
+
+templates
+
+herencia
+
+README
+
+requirements
+
+git correctamente configurado
