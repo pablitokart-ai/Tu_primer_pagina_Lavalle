@@ -1,22 +1,30 @@
-{% extends 'base.html' %}
-
-{% block title %}Listado de productos{% endblock %}
-
-{% block content %}
-<h1 class="mb-4">Listado de productos</h1>
-
-<a href="{% url 'crear_producto' %}" class="btn btn-primary mb-3">➕ Agregar producto</a>
-
-<ul class="list-group">
-    {% for producto in productos %}
-    <li class="list-group-item d-flex justify-content-between">
-        <div>
-            <strong>{{ producto.nombre }}</strong><br>
-            ${{ producto.precio }}
-        </div>
-        <span>ID: {{ producto.id }}</span>
-    </li>
-    {% endfor %}
-</ul>
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Productos</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+        .container { width: 80%; margin: 30px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #333; }
+        a.button { display: inline-block; padding: 10px 20px; background: #007bff; color: #fff; text-decoration: none; border-radius: 5px; margin-bottom: 20px; }
+        a.button:hover { background: #0056b3; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 10px; border-bottom: 1px solid #ddd; }
+        li:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Productos</h1>
+        <a href="{% url 'crear_producto' %}" class="button">Crear Producto</a>
+        <ul>
+            {% for producto in productos %}
+                <li>{{ producto.nombre }} - ${{ producto.precio }}</li>
+            {% empty %}
+                <li>No hay productos.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,22 +1,81 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Productos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .card h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        .card p {
+            margin: 5px 0;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Productos</h1>
+        <a href="{% url 'crear_producto' %}" class="btn">Crear Producto</a>
 
-{% block title %}Listado de productos{% endblock %}
-
-{% block content %}
-<h1 class="mb-4">Listado de productos</h1>
-
-<a href="{% url 'crear_producto' %}" class="btn btn-primary mb-3">➕ Agregar producto</a>
-
-<ul class="list-group">
-    {% for producto in productos %}
-    <li class="list-group-item d-flex justify-content-between">
-        <div>
-            <strong>{{ producto.nombre }}</strong><br>
-            ${{ producto.precio }}
+        <div class="products">
+            {% for producto in productos %}
+                <div class="card">
+                    <h2>{{ producto.nombre }}</h2>
+                    <p>${{ producto.precio }}</p>
+                </div>
+            {% empty %}
+                <p>No hay productos aún.</p>
+            {% endfor %}
         </div>
-        <span>ID: {{ producto.id }}</span>
-    </li>
-    {% endfor %}
-</ul>
-
-{% endblock %}
+    </div>
+</body>
+</html>

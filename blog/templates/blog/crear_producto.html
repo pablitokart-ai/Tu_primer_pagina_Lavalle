@@ -1,15 +1,29 @@
-{% extends 'base.html' %}
-
-{% block title %}Crear producto{% endblock %}
-
-{% block content %}
-<h1 class="mb-4">Agregar producto</h1>
-
-<form method="POST" class="card p-4 shadow-sm bg-white">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-success">Guardar</button>
-    <a href="{% url 'listado_productos' %}" class="btn btn-secondary">Volver</a>
-</form>
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Producto</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
+        .container { width: 50%; margin: 50px auto; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h1 { color: #333; margin-bottom: 20px; }
+        form { display: flex; flex-direction: column; }
+        input, button { padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background: #28a745; color: #fff; border: none; cursor: pointer; }
+        button:hover { background: #218838; }
+        a { text-decoration: none; color: #007bff; }
+        a:hover { color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Producto</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar</button>
+        </form>
+        <a href="{% url 'listado' %}">Volver al listado</a>
+    </div>
+</body>
+</html>
